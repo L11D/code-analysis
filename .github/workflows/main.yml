@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run Semgrep analysis
-        run: semgrep --config security_rules.yml
+        run: semgrep --config security_rules.yml --error
   deploy:
     runs-on: self-hosted
     needs: semgrep
