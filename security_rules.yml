@@ -1,0 +1,15 @@
+rules:
+  - id: insecure-eval
+    patterns:
+      - pattern: eval(...)
+    message: "Использование eval небезопасно и может привести к выполнению произвольного кода."
+    severity: ERROR
+    languages: [python]
+
+  - id: sql-injection
+    patterns:
+      - pattern: conn.execute("SELECT ... FROM ... WHERE ...", ...)
+      - pattern-not: conn.execute("SELECT ... FROM ... WHERE ...", params=(...))
+    message: "Возможная SQL-инъекция. Используйте параметризованные запросы."
+    severity: ERROR
+    languages: [python]
