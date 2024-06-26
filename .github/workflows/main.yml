@@ -15,6 +15,7 @@ jobs:
         run: semgrep --config security_rules.yml
   deploy:
     runs-on: self-hosted
+    needs: semgrep
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
